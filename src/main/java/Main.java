@@ -7,9 +7,12 @@ import org.apache.commons.imaging.formats.tiff.constants.ExifTagConstants;
 import org.apache.commons.imaging.formats.tiff.write.TiffOutputDirectory;
 import org.apache.commons.imaging.formats.tiff.write.TiffOutputSet;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -99,17 +102,55 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-	
-	/*
-	 * 主方法
-	 * @param 测试用
-	 * @return
-	 * @throws
+	    /**
+	 * 计算SHA-512哈希值
+	 * @param filePath 文件路径
+	 * @return 字节数组
+	 * @throws IOException IO异常
+	 * @throws NoSuchAlgorithmException NoSearch算法异常
 	 */
+	public static byte[] calculateSHA512(String filePath) throws IOException, NoSuchAlgorithmException {
+		MessageDigest digest = MessageDigest.getInstance("SHA-512");
+		try (
+				FileInputStream fis = new FileInputStream(filePath);
+				FileChannel channel = fis.getChannel();
+				DigestInputStream dis = new DigestInputStream(fis, digest))
+        {
+            ByteBuffer buffer = ByteBuffer.allocate(81920); // 80 KB buffer
+			while (channel.read(buffer) != -1) {
+				buffer.flip();
+				digest.update(buffer);
+				buffer.clear();
+			}
+			return digest.digest();
+		}
+	}
+
+	/**
+	 * 将字节数组转换为String类型哈希值
+	 * @param bytes 字节数组
+	 * @return 哈希值
+	 */
+	private static String bytesToHex(byte[] bytes) {
+		StringBuilder result = new StringBuilder();
+		for (byte b : bytes) {
+			result.append(String.format("%02x", b));
+		}
+		return result.toString();
+	}
+
 	public static void main(String[] args) {
+		String filePath = "D:\\TestPhoto\\Hikari Yuka[ROGLE] Vol.1 [63P]\\0001.jpg";
+		try {
+			byte[] sha256 = calculateSHA512(filePath);
+			String sha256Hex = bytesToHex(sha256);
+			System.out.println("SHA512: " + sha256Hex);
+		} catch (IOException | NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		FileWrite.minioTest();
 		Random rand = new Random(1024);
 		for (int i = 0; i < 10; i++) System.out.println(rand.nextInt());
-		return;
 	}
 }
 
