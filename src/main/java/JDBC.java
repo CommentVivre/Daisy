@@ -3,7 +3,7 @@ import java.sql.*;
 public class JDBC {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         // 2.用户信息和url
-        String url = "jdbc:mysql://localhost:3306/";
+        String url ="jdbc:mysql://localhost:3306/";
         String username="root";
         String password="Zxcvbnm123++";
         // 3.连接成功，数据库对象 Connection

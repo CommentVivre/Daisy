@@ -16,8 +16,7 @@ import java.util.Random;
 import static java.lang.Integer.*;
 /*
  * 测试程序入口
- *
- * */
+ */
 public class Main {
     // 创建空数组
     static byte[] dat=new byte[1024];

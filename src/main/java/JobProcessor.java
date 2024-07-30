@@ -31,7 +31,8 @@ public class JobProcessor implements PageProcessor {
                 .addUrl("https://www.runoob.com/")  //设置要爬取数据的页面
                 .run(); //执行爬虫
 
-        /*Spider.create(new JobProcessor())
+        /*
+        Spider.create(new JobProcessor())
                 .addUrl("https://www.runoob.com/")  //设置要爬取数据的页面
                 .addPipeline(new ConsolePipeline())
                 .addPipeline(new JsonFilePipeline("C:\\Users\\Unenfantseul\\Documents"))
