@@ -55,6 +55,7 @@
             <version>1.18.1</version>
         </dependency>
 
+        <!-- 串口依赖 -->
         <!-- https://mvnrepository.com/artifact/com.fazecast/jSerialComm -->
         <dependency>
             <groupId>com.fazecast</groupId>
@@ -62,6 +63,49 @@
             <version>2.11.0</version>
         </dependency>
 
-    </dependencies>
 
+        <!-- 爬虫依赖 -->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+
+        <!-- webmagic -->
+        <!-- https://mvnrepository.com/artifact/us.codecraft/webmagic-core -->
+        <dependency>
+            <groupId>us.codecraft</groupId>
+            <artifactId>webmagic-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/us.codecraft/webmagic-extension -->
+        <dependency>
+            <groupId>us.codecraft</groupId>
+            <artifactId>webmagic-extension</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- 日志记录依赖 -->
+        <!-- https://blog.csdn.net/g310773517/article/details/140573899 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.0.0</version>
+        </dependency>
+
+    </dependencies>
 </project>

@@ -4,7 +4,7 @@ import com.fazecast.jSerialComm.SerialPortEvent;
 
 import java.io.IOException;
 
-public class SerialPortApplication {
+public final class SerialPortApplication {
 
     public static void main(String[] args) throws IOException {
         SerialPort[] serialPorts = SerialPort.getCommPorts();//查找所有串口
